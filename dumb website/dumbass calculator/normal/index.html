@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casio FX-570ES Plus 2 Scientific Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="calculator" id="calculator">
+        <div class="header">
+            <div class="brand-info">
+                <span class="brand">CASIO</span>
+                <span class="model">fx-570ES PLUS 2nd</span>
+            </div>
+            <div class="solar-panel"></div>
+            <a href="../dumbass/index.html" class="mode-link">Switch to Dumbass Mode</a>
+        </div>
+
+        <div class="display-container">
+            <div class="upper-display" id="upperDisplay"></div>
+            <div class="main-display" id="mainDisplay">0</div>
+            <div class="status-indicators">
+                <span class="indicator" id="shiftIndicator">SHIFT</span>
+                <span class="indicator" id="alphaIndicator">ALPHA</span>
+                <span class="indicator" id="modeIndicator">COMP</span>
+                <span class="indicator" id="angleIndicator">DEG</span>
+            </div>
+        </div>
+
+        <div class="secondary-display" id="secondaryDisplay">
+            <div class="function-preview" id="functionPreview"></div>
+        </div>
+
+        <div class="button-grid">
+            <button class="btn function-btn" onclick="setMode('COMP')" data-shift="RESET">MODE</button>
+            <button class="btn function-btn" onclick="setupMenu()" data-shift="OFF">SETUP</button>
+            <button class="btn function-btn" onclick="clearAll()" data-shift="CLR">AC</button>
+            <button class="btn function-btn" onclick="deleteChar()" data-shift="">DEL</button>
+
+            <button class="btn special-btn shift-btn" onclick="toggleShift()" id="shiftBtn">SHIFT</button>
+            <button class="btn special-btn alpha-btn" onclick="toggleAlpha()" id="alphaBtn">ALPHA</button>
+            <button class="btn function-btn" onclick="replay()" data-shift="PAUSE">REPLAY</button>
+            <button class="btn function-btn" onclick="memoryStore()" data-shift="RCL">STO</button>
+
+            <button class="btn function-btn" onclick="engineeringMode()" data-shift="←">ENG</button>
+            <button class="btn function-btn" onclick="toggleBrackets('(')" data-shift=")">(</button>
+            <button class="btn function-btn" onclick="toggleBrackets(')')" data-shift="}">)</button>
+            <button class="btn function-btn" onclick="inputComma()" data-shift=";">,</button>
+
+            <button class="btn math-btn" onclick="mathFunction('x²')" data-shift="√x">x²</button>
+            <button class="btn math-btn" onclick="mathFunction('^')" data-shift="∛x">^</button>
+            <button class="btn math-btn" onclick="mathFunction('log')" data-shift="10^x">log</button>
+            <button class="btn math-btn" onclick="mathFunction('ln')" data-shift="e^x">ln</button>
+
+            <button class="btn trig-btn" onclick="mathFunction('sin')" data-shift="sin⁻¹">sin</button>
+            <button class="btn trig-btn" onclick="mathFunction('cos')" data-shift="cos⁻¹">cos</button>
+            <button class="btn trig-btn" onclick="mathFunction('tan')" data-shift="tan⁻¹">tan</button>
+            <button class="btn function-btn" onclick="toggleAngle()" data-shift="DMS">°'"</button>
+
+            <button class="btn math-btn" onclick="mathFunction('sinh')" data-shift="sinh⁻¹">sinh</button>
+            <button class="btn math-btn" onclick="mathFunction('cosh')" data-shift="cosh⁻¹">cosh</button>
+            <button class="btn math-btn" onclick="mathFunction('tanh')" data-shift="tanh⁻¹">tanh</button>
+            <button class="btn function-btn" onclick="mathFunction('abs')" data-shift="Ran#">(-)</button>
+
+            <button class="btn stat-btn" onclick="mathFunction('nPr')" data-shift="nCr">nPr</button>
+            <button class="btn stat-btn" onclick="mathFunction('!')" data-shift="Pol">!</button>
+            <button class="btn function-btn" onclick="fractionMode()" data-shift="Mix">a b/c</button>
+            <button class="btn function-btn" onclick="rndFunction()" data-shift="Ran">RND</button>
+
+            <button class="btn matrix-btn" onclick="matrixMode()" data-shift="VCT">MAT</button>
+            <button class="btn function-btn" onclick="constantsMenu()" data-shift="CONST">CONST</button>
+            <button class="btn math-btn" onclick="mathFunction('∫')" data-shift="d/dx">∫dx</button>
+            <button class="btn function-btn" onclick="equationSolver()" data-shift="SOLVE">EQN</button>
+
+            <button class="btn var-btn" onclick="inputVariable('X')" data-shift="Y">X</button>
+            <button class="btn var-btn" onclick="inputVariable('M')" data-shift="M+">M</button>
+            <button class="btn var-btn" onclick="inputVariable('A')" data-shift="B">A</button>
+            <button class="btn function-btn" onclick="inputAnswer()" data-shift="ANS">ANS</button>
+
+            <button class="btn number-btn" onclick="inputNumber('7')" data-shift="">7</button>
+            <button class="btn number-btn" onclick="inputNumber('8')" data-shift="">8</button>
+            <button class="btn number-btn" onclick="inputNumber('9')" data-shift="">9</button>
+            <button class="btn operator-btn division" onclick="setOperation('÷')" data-shift="">÷</button>
+
+            <button class="btn number-btn" onclick="inputNumber('4')" data-shift="">4</button>
+            <button class="btn number-btn" onclick="inputNumber('5')" data-shift="">5</button>
+            <button class="btn number-btn" onclick="inputNumber('6')" data-shift="">6</button>
+            <button class="btn operator-btn multiplication" onclick="setOperation('×')" data-shift="">×</button>
+
+            <button class="btn number-btn" onclick="inputNumber('1')" data-shift="">1</button>
+            <button class="btn number-btn" onclick="inputNumber('2')" data-shift="">2</button>
+            <button class="btn number-btn" onclick="inputNumber('3')" data-shift="">3</button>
+            <button class="btn operator-btn subtraction" onclick="setOperation('-')" data-shift="">-</button>
+
+            <button class="btn number-btn zero" onclick="inputNumber('0')" data-shift="">0</button>
+            <button class="btn number-btn" onclick="inputDecimal()" data-shift="">.</button>
+            <button class="btn math-btn" onclick="inputExponent()" data-shift="π">×10^x</button>
+            <button class="btn operator-btn addition" onclick="setOperation('+')" data-shift="">+</button>
+
+            <button class="btn equals-btn" onclick="calculate()" data-shift="">=</button>
+        </div>
+
+        <div class="function-menu" id="functionMenu" style="display: none;">
+            <div class="menu-content">
+                <div class="menu-title">Advanced Functions</div>
+                <div class="menu-items">
+                    <button onclick="mathFunction('gcd')">GCD</button>
+                    <button onclick="mathFunction('lcm')">LCM</button>
+                    <button onclick="mathFunction('mod')">MOD</button>
+                    <button onclick="mathFunction('round')">ROUND</button>
+                    <button onclick="mathFunction('floor')">INT</button>
+                    <button onclick="mathFunction('ceil')">CEIL</button>
+                    <button onclick="mathFunction('frac')">FRAC</button>
+                    <button onclick="mathFunction('sign')">SGN</button>
+                </div>
+                <button class="menu-close" onclick="closeFunctionMenu()">CLOSE</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

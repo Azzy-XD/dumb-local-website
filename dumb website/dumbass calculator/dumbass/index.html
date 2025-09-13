@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dumbass Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="calculator" id="calculator">
+        <div class="header">
+            <h1 class="glitch-text">DUMBASS CALCULATOR</h1>
+            <a href="#" class="mode-link">Switch to Normal Mode</a>
+        </div>
+
+        <div class="display" id="display"></div>
+
+        <div class="buttons">
+            <button class="btn function" onclick="clearInput()">AC</button>
+            <button class="btn function" onclick="toggleSign()">±</button>
+            <button class="btn function" onclick="handlePercentage()">%</button>
+            <button class="btn operator" onclick="handleInput('/')">÷</button>
+
+            <button class="btn number" onclick="handleInput('7')">7</button>
+            <button class="btn number" onclick="handleInput('8')">8</button>
+            <button class="btn number" onclick="handleInput('9')">9</button>
+            <button class="btn operator" onclick="handleInput('*')">×</button>
+
+            <button class="btn number" onclick="handleInput('4')">4</button>
+            <button class="btn number" onclick="handleInput('5')">5</button>
+            <button class="btn number" onclick="handleInput('6')">6</button>
+            <button class="btn operator" onclick="handleInput('-')">-</button>
+
+            <button class="btn number" onclick="handleInput('1')">1</button>
+            <button class="btn number" onclick="handleInput('2')">2</button>
+            <button class="btn number" onclick="handleInput('3')">3</button>
+            <button class="btn operator" onclick="handleInput('+')">+</button>
+
+            <button class="btn number zero" onclick="handleInput('0')">0</button>
+            <button class="btn number" onclick="handleInput('.')">.</button>
+            <button class="btn operator equals" onclick="showMatrixEffect()">=</button>
+        </div>
+
+        <div class="status-bar">
+            <span class="status-text">PIXELOS v2.1.4</span>
+            <span class="cpu-usage" id="cpuUsage">CPU: ████░░░░ 50%</span>
+        </div>
+    </div>
+
+    <div class="matrix-overlay" id="matrixOverlay">
+        <canvas class="matrix-canvas" id="matrixCanvas"></canvas>
+        <div class="result-message" id="resultMessage">
+            <div class="computing-text">COMPUTING...</div>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+            <div class="result-found" id="resultFound"></div>
+            <div class="final-result" id="finalResult"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
